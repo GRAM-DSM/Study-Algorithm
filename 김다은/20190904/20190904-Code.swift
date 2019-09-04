@@ -7,6 +7,8 @@
 
 import Foundation
 
+// 첫 번째 코드
+
 func solution(_ arr: [Int]) -> Int {
     var result = [[Int]]()
     
@@ -43,3 +45,25 @@ func RemoveCommonPrimeFactor(_ arr: [[Int]]) -> [Int] {
     return result
 }
 
+// 두 번째 코드
+
+func solution2(_ arr: [Int]) -> Int {
+    var count = 1
+    
+    while true {
+        let result = arr.max()! * count
+        var canReturn = true
+        
+        for num in arr{
+            if result % num != 0 {
+                canReturn = false
+            }
+        }
+        
+        if canReturn {
+            return result
+        }
+        
+        count += 1
+    }
+}
