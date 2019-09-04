@@ -19,5 +19,5 @@ int main()
 {
 	int n;
 	scanf("%d", &n);
-	printf("%s", solution(n));
+	printf("%c%c", solution(n));
 }
