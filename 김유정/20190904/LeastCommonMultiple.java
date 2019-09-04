@@ -2,18 +2,18 @@ public class LeastCommonMultiple{
 	public int solution(int[] arr) {
 		int lcm = arr[0];
 		
-		for(int i=0; i<arr.length; i++) {
+		for(int i=1; i<arr.length; i++) {
 			lcm = LCM(lcm, arr[i]); 
 		}
 		return lcm;
 	}
 	
 	public int GCD(int a, int b) {
-		int tmp;
+		int temp;
 		while(b != 0) {
-			tmp = b;
+			temp = b;
 			b = a % b;
-			a = tmp;
+			a = temp;
 		}
 		return a;
 	}
@@ -26,6 +26,7 @@ public class LeastCommonMultiple{
 
 public static void main(String[] args) {
 	LeastCommonMultiple L = new LeastCommonMultiple();
+	
 		int[] arr1 = {2,6,8,14};
 		int[] arr2 = {1,2,3};
 		
