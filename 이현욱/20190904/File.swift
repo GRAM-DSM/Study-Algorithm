@@ -18,6 +18,8 @@ func solution( _ arr : [Int]) -> Int {
 
 func gcd( _ a : Int, _ b : Int) -> Int {
     while(b != 0) {
+        var a : Int = 0
+        var b : Int = 0
         var temp = a % b
         a = b
         b = temp
