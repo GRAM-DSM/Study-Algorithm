@@ -15,6 +15,6 @@ func solution(_ n:Int) -> String {
         } else {
             res += "박"
         }
-    }
     return res
+    }
 }
