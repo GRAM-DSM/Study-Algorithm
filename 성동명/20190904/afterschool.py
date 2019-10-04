@@ -1,21 +1,10 @@
-def gcd(a, b):
-    if a < b:
-        (a, b) = (b, a)
-    while b != 0:
-        (a, b) = (b, a % b)
-    return a
+from fractions import gcd
 
-def lcm(a,b):
-    return a*b//gcd(a,b)
 
-def solution(arr):
-    while len(arr)!=1:
-        answer = []
-        for i in range(int(len(arr) + 1) // 2):
-            answer.append(lcm(arr[i], arr[-1 - i]))
-        arr = answer
+def nlcm(arr):
+    answer = 1
+    for i in arr:
+        answer = i * answer / gcd(i, answer)
+    return answer
 
-    return int(arr[0])
-
-a=[2,6,9,35]
-print(solution(a))
+print(nlcm([2,6,9,35]));
