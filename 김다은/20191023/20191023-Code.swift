@@ -8,50 +8,20 @@
 import Foundation
 
 func solution(_ number:String, _ k:Int) -> String {
-    var result = ""
-    var startIndex = 0
-    var digit = number.count - k
+    var k = k
+    var result = [String]()
 
-    while digit > 0 {
-        var max = number[String.Index(encodedOffset: startIndex)]
-        for i in startIndex...number.count-digit {
-            if max < number[String.Index(encodedOffset: i)] {
-                max = number[String.Index(encodedOffset: i)]
-                startIndex = i
-            }
+    for (idx, num) in number.enumerated() {
+        while !result.isEmpty && String(num) > result.last! && k > 0 {
+            result.removeLast()
+            k -= 1
         }
-        result.append(max)
-        startIndex += 1
-        digit -= 1
+
+        if k == 0 { result += number.map { String($0) }[idx...]; break }
+
+        result.append(String(num))
     }
 
-    return result
-}
-
-func solution(_ number:String, _ k:Int) -> String {
-    var num = number
-    var result = ""
-    var digit = number.count - k
-
-    while true {
-        var max = differance(num, digit)
-        if max.count == digit {
-            result.append(contentsOf: max)
-            break
-        } else {
-            result.append(max.removeFirst())
-            num = max
-            digit -= 1
-        }
-    }
-
-    return result
-}
-
-func differance(_ number:String, _ digit:Int) -> String {
-    var result = number
-    var remainNum = ""
-    for _ in 1..<digit { remainNum.append(result.removeLast()) }
-    if let i = result.firstIndex(of: result.max()!) { result.removeSubrange(result.startIndex..<i) }
-    return result + remainNum.reversed()
+    if k > 0 { return result[..<(result.count - k)].joined() }
+    return result.joined()
 }
